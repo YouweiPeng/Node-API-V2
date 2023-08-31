@@ -6,19 +6,23 @@ const mongoose = require('mongoose');
 const productRoute=require('./routes/ProductRoutes')
 const MONGO_URL=process.env.MONGO_URL
 const PORT=process.env.PORT || 3000
-
+const errorMiddleware = require('./middleware/errorMiddleware')
+var cors=require('cors')
 //routes
+app.use(cors)
 app.use(express.json())
+
+
 app.use('/api/product', productRoute)
 app.get('/', (req, res) => {
-    res.send('Hello Node')
+    throw new Error('fake error')
 });
 
 app.get('/blog', (req, res) => {
     res.send('Hello blog my name is youwei')
 });
 
-
+app.use(errorMiddleware)
 
 mongoose.
 connect(MONGO_URL)
