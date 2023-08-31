@@ -9,7 +9,7 @@ const PORT=process.env.PORT || 3000
 const errorMiddleware = require('./middleware/errorMiddleware')
 var cors=require('cors')
 //routes
-app.use(cors)
+app.use(cors())
 app.use(express.json())
 
 
