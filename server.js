@@ -23,7 +23,7 @@ app.get('/blog', (req, res) => {
 });
 
 app.use(errorMiddleware)
-
+mongoose.set("strictQuery", false)
 mongoose.
 connect(MONGO_URL)
 .then(() => {
